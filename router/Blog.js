@@ -1,0 +1,13 @@
+const express = require("express")
+const { home, Createpost, ReadallPost, AddComment, getallComment, BlogById, updateBlog, deleteBlogPost } = require("../controller/Blog")
+const { ProtectedLogin, OnlyAuthor } = require("../Middleware/Protected")
+const router = express.Router()
+router.get('/', home)
+router.post('/CreateBlog', ProtectedLogin, OnlyAuthor, Createpost)
+router.get('/posts', ProtectedLogin, ReadallPost)
+router.post(`/posts/:id`, ProtectedLogin, AddComment)
+router.get(`/posts/comment/:id`, ProtectedLogin, getallComment)
+router.get(`/posts/:id`, ProtectedLogin, BlogById)
+router.put(`/posts/:id`, ProtectedLogin, updateBlog)
+router.delete(`/posts/:id`, ProtectedLogin, deleteBlogPost)
+module.exports = { router }
