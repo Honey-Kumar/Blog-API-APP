@@ -43,6 +43,8 @@ const BlogSchema = mongoose.Schema({
 )
 module.exports = mongoose.model('Blog', BlogSchema, 'BlogPost')
 
+
+
 // const CommentSchema = mongoose.Schema({
 //     post: { type: mongoose.SchemaTypes.ObjectId, ref: 'Blog' },
 //     name: { type: String, required: [true, 'Must Enter Your Name'] },

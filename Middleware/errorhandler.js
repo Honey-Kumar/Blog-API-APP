@@ -28,12 +28,12 @@ const Handleerror = (error, req, res, next) => {
     }
 
     // Token Expire Error
-    if (error.code === 'TokenExpireError') {
-        const newmessage = `jsonwebtoken is Expire . Please try Again`
+    if (error.code === 'TokenExpireError' || error.code === 'jwt expired') {
+        const newmessage = `jsonwebtoken is Expire . Please Login Again`
         error = new Errorcover(newmessage, 400);
     }
 
-    res.status(error.statusCode).json({ message: error.message })
+    res.status(error.statusCode).json({ message: error.message || error.stack })
 
 }
 module.exports = Handleerror
